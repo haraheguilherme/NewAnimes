@@ -1,0 +1,164 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contagem Regressiva dos Animes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+        }
+        .countdown-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-items: center;
+        }
+        .gallery-item {
+            width: 100%;
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 10px;
+        }
+        .image {
+            width: 600px;
+            height: 300px;
+            background-color: #ddd;
+            border-radius: 8px;
+            margin: 0 auto 10px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+            font-size: 1.2em;
+        }
+        .image::before {
+            content: "Imagem do Anime";
+        }
+        .countdown-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1em;
+            margin: 10px 0;
+        }
+        .time-unit {
+            margin: 0 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao Mundo dos Animes</h1>
+    </header>
+
+    <section class="countdown-section">
+        <h2>Contagem Regressiva dos Animes</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <div class="image"></div>
+                <div id="countdown1" class="countdown-wrapper">
+                    <div class="time-unit">
+                        <span id="days1">...</span>
+                        <div>Dias</div>
+                    </div>
+                    <div class="time-unit">
+                        <span id="hours1">...</span>
+                        <div>Horas</div>
+                    </div>
+                    <div class="time-unit">
+                        <span id="minutes1">...</span>
+                        <div>Minutos</div>
+                    </div>
+                    <div class="time-unit">
+                        <span id="seconds1">...</span>
+                        <div>Segundos</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <div class="image"></div>
+                <div id="countdown2" class="countdown-wrapper">
+                    <div class="time-unit">
+                        <span id="days2">...</span>
+                        <div>Dias</div>
+                    </div>
+                    <div class="time-unit">
+                        <span id="hours2">...</span>
+                        <div>Horas</div>
+                    </div>
+                    <div class="time-unit">
+                        <span id="minutes2">...</span>
+                        <div>Minutos</div>
+                    </div>
+                    <div class="time-unit">
+                        <span id="seconds2">...</span>
+                        <div>Segundos</div>
+                    </div>
+                </div>
+            </div>
+            <!-- Adicionar outros itens da galeria conforme necessário -->
+        </div>
+    </section>
+    
+    <script>
+        function calculateCountdown(targetDate) {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            let days, hours, minutes, seconds;
+            
+            if (distance > 0) {
+                days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            } else {
+                days = hours = minutes = seconds = 0;
+            }
+
+            return { days, hours, minutes, seconds };
+        }
+
+        function updateCountdown(elementId, countdownDate) {
+            const { days, hours, minutes, seconds } = calculateCountdown(countdownDate);
+            
+            document.getElementById('days' + elementId).textContent = days;
+            document.getElementById('hours' + elementId).textContent = hours;
+            document.getElementById('minutes' + elementId).textContent = minutes;
+            document.getElementById('seconds' + elementId).textContent = seconds;
+        }
+
+        const animeDates = [
+            new Date('2023-12-31T00:00:00').getTime(), // Date for Anime 1
+            new Date('2024-01-15T00:00:00').getTime()  // Date for Anime 2
+            // Add more dates as needed
+        ];
+
+        function updateAllCountdowns() {
+            animeDates.forEach((date, index) => {
+                updateCountdown(index + 1, date);
+            });
+        }
+
+        setInterval(updateAllCountdowns, 1000);
+    </script>
+</body>
+</html>
