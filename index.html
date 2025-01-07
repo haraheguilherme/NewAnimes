@@ -1,5 +1,4 @@
-<html lang="pt-BR">
-<head>
+<html><head><base href="https://example.com">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contagem Regressiva dos Animes</title>
@@ -39,18 +38,15 @@
         .image {
             width: 600px;
             height: 300px;
-            background-color: #ddd;
             border-radius: 8px;
             margin: 0 auto 10px;
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #777;
             font-size: 1.2em;
-        }
-        .image::before {
-            content: "Imagem do Anime";
+            background-position: center;
+            background-size: cover;
         }
         .countdown-wrapper {
             display: flex;
@@ -74,48 +70,52 @@
         <h2>Contagem Regressiva dos Animes</h2>
         <div class="gallery">
             <div class="gallery-item">
-                <div class="image"></div>
+                <div class="image" style="background-image: url('https://example.com/image1.jpg');">
+                    <!-- Use the style attribute to set the background-image to the anime image URL -->
+                </div>
                 <div id="countdown1" class="countdown-wrapper">
                     <div class="time-unit">
-                        <span id="days1">...</span>
+                        <span id="days1">0</span>
                         <div>Dias</div>
                     </div>
                     <div class="time-unit">
-                        <span id="hours1">...</span>
+                        <span id="hours1">0</span>
                         <div>Horas</div>
                     </div>
                     <div class="time-unit">
-                        <span id="minutes1">...</span>
+                        <span id="minutes1">0</span>
                         <div>Minutos</div>
                     </div>
                     <div class="time-unit">
-                        <span id="seconds1">...</span>
+                        <span id="seconds1">0</span>
                         <div>Segundos</div>
                     </div>
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="image"></div>
+                <div class="image" style="background-image: url('https://example.com/image2.jpg');">
+                    <!-- Use the style attribute to set the background-image to the anime image URL -->
+                </div>
                 <div id="countdown2" class="countdown-wrapper">
                     <div class="time-unit">
-                        <span id="days2">...</span>
+                        <span id="days2">0</span>
                         <div>Dias</div>
                     </div>
                     <div class="time-unit">
-                        <span id="hours2">...</span>
+                        <span id="hours2">0</span>
                         <div>Horas</div>
                     </div>
                     <div class="time-unit">
-                        <span id="minutes2">...</span>
+                        <span id="minutes2">0</span>
                         <div>Minutos</div>
                     </div>
                     <div class="time-unit">
-                        <span id="seconds2">...</span>
+                        <span id="seconds2">0</span>
                         <div>Segundos</div>
                     </div>
                 </div>
             </div>
-            <!-- Adicionar outros itens da galeria conforme necessário -->
+            <!-- Repeat the above `<div class="gallery-item">` structure for additional animes -->
         </div>
     </section>
     
@@ -147,8 +147,8 @@
         }
 
         const animeDates = [
-            new Date('2023-12-31T00:00:00').getTime(), // Date for Anime 1
-            new Date('2024-01-15T00:00:00').getTime()  // Date for Anime 2
+            new Date('2025-06-24T00:00:00').getTime(), // Date for Anime 1
+            new Date('2025-02-10T00:00:00').getTime()  // Date for Anime 2
             // Add more dates as needed
         ];
 
